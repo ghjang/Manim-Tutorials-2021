@@ -187,6 +187,18 @@ class Tute4(Scene):
         self.play(r.animate.set_value(2), run_time=5)
 
 
+class Tute5(Scene):
+    def construct(self):
+        r = ValueTracker(0.5)  # Tracks the value of the radius
+
+        circle = always_redraw(
+            lambda: Circle(radius=r.get_value(), stroke_color=YELLOW, stroke_width=5)
+        )
+
+        self.add(circle)
+        self.play(r.animate.set_value(2), run_time=5)
+
+
 class testing(Scene):
     def construct(self):
 

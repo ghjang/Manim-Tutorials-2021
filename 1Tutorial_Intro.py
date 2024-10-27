@@ -174,6 +174,9 @@ class Tute4(Scene):
             )
         )
 
+        # Manim '0.17.2'에서
+        # 'LaggedStart' 클래스 사용시 'circle, line_radius, triangle'에 'ValueTracker'값이 적용되지 않음.
+        """
         self.play(
             LaggedStart(
                 Create(circle),
@@ -183,6 +186,13 @@ class Tute4(Scene):
                 lag_ratio=0.75,
             )
         )
+        """
+
+        # Manim '0.17.2'에서 정상적으로 'ValueTracker'값이 적용되도록 하는 workaround 코드
+        self.play(Create(circle), run_time=1)
+        self.play(DrawBorderThenFill(line_radius), run_time=1)
+        self.play(DrawBorderThenFill(triangle), run_time=1)
+
         self.play(ReplacementTransform(circle.copy(), line_circumference), run_time=2)
         self.play(r.animate.set_value(2), run_time=5)
 
